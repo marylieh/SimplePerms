@@ -1,0 +1,12 @@
+name: SimplePerms
+version: ${project.version}
+main: de.***REMOVED***.simpleperms.Main
+api-version: 1.16
+authors: [ ***REMOVED*** ]
+description: A simple Plugin to manage Permissions
+website: github.***REMOVED***.me
+
+commands:
+  spadd:
+  spremove:
+  sptemp:
