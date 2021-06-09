@@ -1,9 +1,7 @@
 package de.***REMOVED***.simpleperms;
 
-import de.***REMOVED***.simpleperms.commands.AddPermissionCommand;
-import de.***REMOVED***.simpleperms.commands.AddTempPermission;
-import de.***REMOVED***.simpleperms.commands.GetPermissionCommand;
-import de.***REMOVED***.simpleperms.commands.RemovePermissionCommand;
+import de.***REMOVED***.simpleperms.commands.*;
+import de.***REMOVED***.simpleperms.groups.GroupManager;
 import de.***REMOVED***.simpleperms.permissions.PermissionManager;
 import de.***REMOVED***.simpleperms.utils.Config;
 import org.bukkit.Bukkit;
@@ -17,6 +15,7 @@ public final class Main extends JavaPlugin {
     private String error = "§8[§4ERROR§8] §f";
     private Config config;
     private PermissionManager permissionManager;
+    private GroupManager groupManager;
 
     @Override
     public void onLoad() {
@@ -30,6 +29,7 @@ public final class Main extends JavaPlugin {
         ListenerRegistration();
 
         permissionManager = new PermissionManager();
+        groupManager = new GroupManager();
     }
 
     @Override
@@ -42,6 +42,8 @@ public final class Main extends JavaPlugin {
         getCommand("spremove").setExecutor(new RemovePermissionCommand());
         getCommand("sptemp").setExecutor(new AddTempPermission());
         getCommand("spget").setExecutor(new GetPermissionCommand());
+        getCommand("spgadd").setExecutor(new AddGroupCommand());
+        getCommand("spgpadd").setExecutor(new AddGroupPermissionCommand());
     }
 
     private void ListenerRegistration() {
@@ -66,5 +68,9 @@ public final class Main extends JavaPlugin {
 
     public PermissionManager getPermissionManager() {
         return permissionManager;
+    }
+
+    public GroupManager getGroupManager() {
+        return groupManager;
     }
 }

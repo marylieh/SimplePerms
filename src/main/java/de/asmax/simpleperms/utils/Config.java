@@ -11,7 +11,7 @@ public class Config {
     private final YamlConfiguration config;
 
     public Config() {
-        File dir = new File("./plugins/SimpleBackpack");
+        File dir = new File("./plugins/SimplePerms");
 
         if (!dir.exists()) {
             dir.mkdirs();

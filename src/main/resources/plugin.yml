@@ -11,3 +11,5 @@ commands:
   spremove:
   sptemp:
   spget:
+  spgadd:
+  spgpadd:
