@@ -24,4 +24,12 @@ public class PermissionManager {
         attachment.setPermission(permission, false);
     }
 
+    public boolean getPermission(Player player, String permission) {
+        if(player.hasPermission(permission)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
