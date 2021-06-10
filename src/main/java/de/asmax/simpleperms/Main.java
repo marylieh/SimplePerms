@@ -27,6 +27,7 @@ public final class Main extends JavaPlugin {
     public void onEnable() {
         CommandRegistration();
         ListenerRegistration();
+        GroupManager.copyDefaultGroup();
 
         permissionManager = new PermissionManager();
         groupManager = new GroupManager();
@@ -44,6 +45,10 @@ public final class Main extends JavaPlugin {
         getCommand("spget").setExecutor(new GetPermissionCommand());
         getCommand("spgadd").setExecutor(new AddGroupCommand());
         getCommand("spgpadd").setExecutor(new AddGroupPermissionCommand());
+        getCommand("spgprem").setExecutor(new RemoveGroupPermissionCommand());
+        getCommand("spgdel").setExecutor(new DeleteGroupCommand());
+        getCommand("spglist").setExecutor(new ListGroupsCommand());
+        getCommand("spgplist").setExecutor(new ListPermissionsCommand());
     }
 
     private void ListenerRegistration() {
@@ -73,4 +78,5 @@ public final class Main extends JavaPlugin {
     public GroupManager getGroupManager() {
         return groupManager;
     }
+
 }

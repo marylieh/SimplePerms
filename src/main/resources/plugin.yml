@@ -13,3 +13,7 @@ commands:
   spget:
   spgadd:
   spgpadd:
+  spgprem:
+  spgdel:
+  spglist:
+  spgplist:

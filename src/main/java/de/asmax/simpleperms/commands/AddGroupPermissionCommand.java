@@ -39,13 +39,10 @@ public class AddGroupPermissionCommand implements CommandExecutor {
             return true;
         }
 
-        if(groupManager.getPermission(name, permission)) {
-            player.sendMessage(error + "The Group: §6" + name + " §fhas already the permission: §4" + permission);
-            return true;
-        }
-
         groupManager.addPermission(name, permission);
-        player.sendMessage(prefix + "§aYou have successfully added the permission: §6" + permission + " §ato the Group: §6" + name);
+        player.sendMessage(prefix + "§aYou have successfully §2added §athe permission: §6" + permission + " §ato the Group: §6" + name);
+
         return true;
+
     }
 }
