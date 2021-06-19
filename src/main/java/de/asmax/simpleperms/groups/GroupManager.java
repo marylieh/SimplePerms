@@ -2,6 +2,7 @@ package de.***REMOVED***.simpleperms.groups;
 
 import de.***REMOVED***.simpleperms.Main;
 import de.***REMOVED***.simpleperms.utils.Config;
+import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,15 +13,71 @@ public class GroupManager {
 
     public static void addGroup(String group, int level) {
         ArrayList<String> tempList = new ArrayList<String>();
+        ArrayList<String> playertempList = new ArrayList<String>();
         tempList.add("spacer.space");
+        playertempList.add("DoNotTouchThis");
 
         config.getConfig().set("Groups." + group + ".level", level);
         config.getConfig().set("Groups." + group + ".permissions", tempList);
+        config.getConfig().set("Groups." + group + ".players", playertempList);
         config.save();
+    }
+
+    public static void addPlayerToGroup(Player player, String group) {
+        if(!getGroup(group)) {
+            return;
+        }
+
+        if(player == null) {
+            return;
+        }
+
+        String UUID = player.getUniqueId().toString();
+
+        @SuppressWarnings("unchecked")
+        List<String> playerList = (List<String>) config.getConfig().getList("Groups." + group + ".players");
+        System.out.println(playerList);
+
+        if (playerList == null) {
+            System.out.println("PlayerList equals null");
+            return;
+        }
+        playerList.add(UUID);
+        config.getConfig().set("Groups." + group + ".players", playerList);
+        config.save();
+    }
+
+    public static void removePlayerFromGroup(Player player, String group) {
+
+        String UUID = player.getUniqueId().toString();
+
+        @SuppressWarnings("unchecked")
+        List<String> playerList = (List<String>) config.getConfig().getList("Groups." + group + ".players");
+
+        if(!playerList.contains(UUID)) {
+            return;
+        }
+
+        playerList.remove(UUID);
+        config.getConfig().set("Groups." + group + ".players", playerList);
+        config.save();
+    }
+
+    public static boolean getPlayerGroup(Player player, String group) {
+        String UUID = player.getUniqueId().toString();
+
+        List<String> playerList = (List<String>) config.getConfig().getList("Groups." + group + ".players");
+
+        if(playerList.contains(UUID)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public static void addPermission(String group, String permission) {
         System.out.println("[DEBUG] Group: " + group + " Permission: " + permission);
+        @SuppressWarnings("unchecked")
         List<String> groupPermissionList = (List<String>) config.getConfig().getList("Groups." + group + ".permissions");
 
         if(config.getConfig().get("Groups." + group) == null) {
@@ -31,6 +88,13 @@ public class GroupManager {
         config.getConfig().set("Groups." + group + ".permissions", groupPermissionList);
         config.save();
 
+    }
+
+    public static List<String> listPlayers(String group) {
+        @SuppressWarnings("unchecked")
+        List<String> playerList = (List<String>) config.getConfig().getList("Groups." + group + ".players");
+
+        return playerList;
     }
 
     public static void copyDefaultGroup() {

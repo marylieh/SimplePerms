@@ -45,6 +45,7 @@ public class RemovePermissionCommand implements CommandExecutor {
         }
 
         Main.getInstance().getPermissionManager().removePermission(user, perm);
+        Main.getInstance().getPermissionManager().removeSavedPlayerPermissions(user, perm);
         player.sendMessage(prefix + "§aYou have successfully removed the permission: §6" + perm + " §afrom: §6" + userName);
 
         return true;

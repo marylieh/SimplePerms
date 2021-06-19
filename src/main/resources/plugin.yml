@@ -17,3 +17,7 @@ commands:
   spgdel:
   spglist:
   spgplist:
+  spgpladd:
+  spgplrem:
+  spgplget:
+  spgpllist:
