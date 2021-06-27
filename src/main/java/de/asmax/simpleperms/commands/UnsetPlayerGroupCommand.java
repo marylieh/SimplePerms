@@ -2,16 +2,22 @@ package de.***REMOVED***.simpleperms.commands;
 
 import de.***REMOVED***.simpleperms.Main;
 import de.***REMOVED***.simpleperms.groups.GroupManager;
+import de.***REMOVED***.simpleperms.utils.Config;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.permissions.PermissionAttachment;
+
+import java.util.List;
 
 public class UnsetPlayerGroupCommand implements CommandExecutor {
 
     String prefix = Main.getInstance().getPrefix();
     String error = Main.getInstance().getError();
+
+    Config config = Main.getInstance().getConfiguration();
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -51,7 +57,20 @@ public class UnsetPlayerGroupCommand implements CommandExecutor {
             return true;
         }
 
+        @SuppressWarnings("unchecked")
+        List<String> tempPermissionList = (List<String>) config.getConfig().getList("Groups." + group + ".permissions");
+
+        for(int n = 0; n < tempPermissionList.size(); n++) {
+            String permission = tempPermissionList.get(n);
+            System.out.println(permission);
+
+            PermissionAttachment attachment = user.addAttachment(Main.getInstance());
+            attachment.unsetPermission(permission);
+
+        }
+
         GroupManager.removePlayerFromGroup(user, group);
+        user.kickPlayer(prefix + "§2You're Group has been updated!");
         player.sendMessage(prefix + "§aYou have successfully §cremoved §6" + userName + " §afrom Group: §b" + group);
         return true;
     }

@@ -66,6 +66,7 @@ public class GroupManager {
     public static boolean getPlayerGroup(Player player, String group) {
         String UUID = player.getUniqueId().toString();
 
+        @SuppressWarnings("unchecked")
         List<String> playerList = (List<String>) config.getConfig().getList("Groups." + group + ".players");
 
         if(playerList.contains(UUID)) {

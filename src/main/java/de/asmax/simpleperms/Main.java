@@ -34,6 +34,7 @@ public final class Main extends JavaPlugin {
         permissionManager = new PermissionManager();
         groupManager = new GroupManager();
         initPlayerPermissions();
+        initPlayerGroups();
     }
 
     @Override
@@ -69,6 +70,14 @@ public final class Main extends JavaPlugin {
         Bukkit.getOnlinePlayers().forEach(player -> {
             if(player != null) {
                 permissionManager.revokePermissions(player);
+            }
+        });
+    }
+
+    private void initPlayerGroups() {
+        Bukkit.getOnlinePlayers().forEach(player -> {
+            if(player != null) {
+                permissionManager.revokeGroups(player);
             }
         });
     }

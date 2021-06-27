@@ -1,12 +1,16 @@
 package de.***REMOVED***.simpleperms.permissions;
 
 import de.***REMOVED***.simpleperms.Main;
+import de.***REMOVED***.simpleperms.groups.GroupManager;
 import de.***REMOVED***.simpleperms.utils.Config;
+import org.apache.commons.lang.StringUtils;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.PermissionAttachment;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 public class PermissionManager {
 
@@ -35,6 +39,48 @@ public class PermissionManager {
 
             PermissionAttachment attachment = player.addAttachment(Main.getInstance());
             attachment.setPermission(permission, true);
+        }
+    }
+
+    public void revokeGroups(Player player) {
+        Set<String> totalGroups = config.getConfig().getConfigurationSection("Groups").getKeys(false);
+        StringBuilder groupString = new StringBuilder(totalGroups.toString());
+        groupString.delete(0, 10);
+        String test = groupString.toString();
+        test = StringUtils.removeEnd(test, "]");
+        System.out.println(test);
+        test = StringUtils.deleteWhitespace(test);
+        System.out.println(test);
+        System.out.println(test);
+
+        ArrayList<String> totalGroupList = new ArrayList<String>(Arrays.asList(test.split(",")));
+
+        for(int i = 0; i < totalGroupList.size(); i++) {
+            String group = totalGroupList.get(i);
+            System.out.println(group);
+
+            try {
+
+                if(GroupManager.getPlayerGroup(player, group)) {
+
+                    @SuppressWarnings("unchecked")
+                    List<String> tempPermissionList = (List<String>) config.getConfig().getList("Groups." + group + ".permissions");
+
+                    for (int n = 0; n < tempPermissionList.size(); n++) {
+                        String permission = tempPermissionList.get(n);
+                        System.out.println(permission);
+
+                        PermissionAttachment attachment = player.addAttachment(Main.getInstance());
+                        attachment.setPermission(permission, true);
+
+                    }
+
+                }
+
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+                System.out.println("NullPointerException in Group Management System!");
+            }
         }
     }
 

@@ -48,31 +48,38 @@ public class JoinListener implements Listener {
         String test = groupString.toString();
         test = StringUtils.removeEnd(test, "]");
         System.out.println(test);
+        test = StringUtils.deleteWhitespace(test);
+        System.out.println(test);
+        System.out.println(test);
 
         ArrayList<String> totalGroupList = new ArrayList<String>(Arrays.asList(test.split(",")));
 
-        loop:
         for(int i = 0; i < totalGroupList.size(); i++) {
             String group = totalGroupList.get(i);
             System.out.println(group);
 
-            if(GroupManager.getPlayerGroup(player, group)) {
+            try {
 
-                @SuppressWarnings("unchecked")
-                List<String> tempPermissionList = (List<String>) config.getConfig().getList("Groups." + group + ".permissions");
+                if(GroupManager.getPlayerGroup(player, group)) {
 
-                for(int n = 0; n < tempPermissionList.size(); n++) {
-                    String permission = tempPermissionList.get(n);
-                    System.out.println(permission);
+                    @SuppressWarnings("unchecked")
+                    List<String> tempPermissionList = (List<String>) config.getConfig().getList("Groups." + group + ".permissions");
 
-                    PermissionAttachment attachment = player.addAttachment(Main.getInstance());
-                    attachment.setPermission(permission, true);
+                    for (int n = 0; n < tempPermissionList.size(); n++) {
+                        String permission = tempPermissionList.get(n);
+                        System.out.println(permission);
+
+                        PermissionAttachment attachment = player.addAttachment(Main.getInstance());
+                        attachment.setPermission(permission, true);
+
+                    }
 
                 }
 
-            } else {
-                continue loop;
+            } catch (NullPointerException e) {
+                System.out.println("NullPointerException in Group Management System! If the Permission System work properly you can ignore this error.");
             }
+
         }
 
     }
