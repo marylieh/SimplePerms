@@ -28,7 +28,7 @@ public class ListPermissionsCommand implements CommandExecutor {
         }
 
         if(args.length != 1) {
-            player.sendMessage(error + "Please use: §9/spgadd <name>");
+            player.sendMessage(error + "Please use: §9/spgplist <group>");
             return true;
         }
 

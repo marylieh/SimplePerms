@@ -1,7 +1,6 @@
 package de.***REMOVED***.simpleperms;
 
 import de.***REMOVED***.simpleperms.commands.*;
-import de.***REMOVED***.simpleperms.commands.override.OpCommand;
 import de.***REMOVED***.simpleperms.groups.GroupManager;
 import de.***REMOVED***.simpleperms.listener.JoinListener;
 import de.***REMOVED***.simpleperms.permissions.PermissionManager;
@@ -62,7 +61,7 @@ public final class Main extends JavaPlugin {
     private void ListenerRegistration() {
         PluginManager pluginManager = Bukkit.getPluginManager();
 
-        pluginManager.registerEvents(new OpCommand(), this);
+        //pluginManager.registerEvents(new OpCommand(), this);
         pluginManager.registerEvents(new JoinListener(), this);
     }
 
