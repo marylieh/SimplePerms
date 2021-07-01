@@ -52,6 +52,7 @@ public class SetPlayerGroupCommand implements CommandExecutor {
         }
 
         GroupManager.addPlayerToGroup(user, group);
+        user.kickPlayer(prefix + "§2You're Group has been updated!");
         player.sendMessage(prefix + "§aYou have successfully §2added §6" + userName + " §ato Group: §b" + group);
         return true;
     }
