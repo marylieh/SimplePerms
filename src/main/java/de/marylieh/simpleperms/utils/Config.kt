@@ -1,4 +1,4 @@
-package de.***REMOVED***.simpleperms.utils
+package de.marylieh.simpleperms.utils
 
 import org.bukkit.configuration.InvalidConfigurationException
 import org.bukkit.configuration.file.YamlConfiguration

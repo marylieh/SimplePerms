@@ -1,10 +1,10 @@
-package de.***REMOVED***.simpleperms
+package de.marylieh.simpleperms
 
-import de.***REMOVED***.simpleperms.commands.*
-import de.***REMOVED***.simpleperms.groups.GroupManager
-import de.***REMOVED***.simpleperms.listener.JoinListener
-import de.***REMOVED***.simpleperms.permissions.PermissionManager
-import de.***REMOVED***.simpleperms.utils.Config
+import de.marylieh.simpleperms.commands.*
+import de.marylieh.simpleperms.groups.GroupManager
+import de.marylieh.simpleperms.listener.JoinListener
+import de.marylieh.simpleperms.permissions.PermissionManager
+import de.marylieh.simpleperms.utils.Config
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import org.bukkit.plugin.java.JavaPlugin
@@ -19,7 +19,7 @@ class Main : JavaPlugin() {
     }
 
     override fun onLoad() {
-        instance = this
+        Main.Companion.instance = this
         Config.Config()
     }
 

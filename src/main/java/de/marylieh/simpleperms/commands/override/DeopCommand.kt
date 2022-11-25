@@ -1,21 +1,20 @@
-package de.***REMOVED***.simpleperms.commands.override
+package de.marylieh.simpleperms.commands.override
 
-import de.***REMOVED***.simpleperms.Main
-import de.***REMOVED***.simpleperms.permissions.PermissionManager
+import de.marylieh.simpleperms.permissions.PermissionManager
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerCommandPreprocessEvent
 
-class OpCommand : Listener {
+class DeopCommand : Listener {
     @EventHandler
     fun handleCommand(event: PlayerCommandPreprocessEvent) {
         val message = event.message
         val player = event.player
-        if (message.equals("/op", ignoreCase = true)) {
+        if (message.equals("/deop", ignoreCase = true)) {
             event.isCancelled = true
-            PermissionManager.setPermission(player, "*")
+            PermissionManager.removePermission(player, "*")
             PermissionManager.savePlayerPermissions(player, "*")
-            player.sendMessage("${Main.prefix}§4You have successfully became an operator!")
+            player.sendMessage("${de.marylieh.simpleperms.Main.prefix}§4You have been successfully deoped!")
         }
     }
 }

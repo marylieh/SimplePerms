@@ -1,9 +1,8 @@
-package de.***REMOVED***.simpleperms.commands
+package de.marylieh.simpleperms.commands
 
-import de.***REMOVED***.simpleperms.Main
-import de.***REMOVED***.simpleperms.Main.Companion.error
-import de.***REMOVED***.simpleperms.Main.Companion.prefix
-import de.***REMOVED***.simpleperms.groups.GroupManager
+import de.marylieh.simpleperms.Main.Companion.error
+import de.marylieh.simpleperms.Main.Companion.prefix
+import de.marylieh.simpleperms.groups.GroupManager
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender

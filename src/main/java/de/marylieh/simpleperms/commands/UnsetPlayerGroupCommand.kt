@@ -1,10 +1,9 @@
-package de.***REMOVED***.simpleperms.commands
+package de.marylieh.simpleperms.commands
 
-import de.***REMOVED***.simpleperms.Main
-import de.***REMOVED***.simpleperms.Main.Companion.error
-import de.***REMOVED***.simpleperms.Main.Companion.prefix
-import de.***REMOVED***.simpleperms.groups.GroupManager
-import de.***REMOVED***.simpleperms.utils.Config
+import de.marylieh.simpleperms.groups.GroupManager
+import de.marylieh.simpleperms.utils.Config
+import de.marylieh.simpleperms.Main.Companion.error
+import de.marylieh.simpleperms.Main.Companion.prefix
 import org.bukkit.Bukkit
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
@@ -45,7 +44,7 @@ class UnsetPlayerGroupCommand : CommandExecutor {
         for (n in tempPermissionList.indices) {
             val permission = tempPermissionList[n]
             println(permission)
-            val attachment = user.addAttachment(Main.instance)
+            val attachment = user.addAttachment(de.marylieh.simpleperms.Main.instance)
             attachment.unsetPermission(permission)
         }
         GroupManager.removePlayerFromGroup(user, group)

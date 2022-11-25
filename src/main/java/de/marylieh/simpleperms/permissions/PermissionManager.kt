@@ -1,15 +1,14 @@
-package de.***REMOVED***.simpleperms.permissions
+package de.marylieh.simpleperms.permissions
 
-import de.***REMOVED***.simpleperms.Main
-import de.***REMOVED***.simpleperms.groups.GroupManager
-import de.***REMOVED***.simpleperms.utils.Config
+import de.marylieh.simpleperms.groups.GroupManager
+import de.marylieh.simpleperms.utils.Config
 import org.apache.commons.lang.StringUtils
 import org.bukkit.entity.Player
 import java.util.*
 
 object PermissionManager {
     fun setPermission(player: Player, permission: String?) {
-        val attachment = player.addAttachment(Main.instance)
+        val attachment = player.addAttachment(de.marylieh.simpleperms.Main.instance)
         attachment.setPermission(permission!!, true)
     }
 
@@ -23,7 +22,7 @@ object PermissionManager {
         for (i in permissions.indices) {
             val permission = permissions[i]
             println(permission)
-            val attachment = player.addAttachment(Main.instance)
+            val attachment = player.addAttachment(de.marylieh.simpleperms.Main.instance)
             attachment.setPermission(permission, true)
         }
     }
@@ -49,7 +48,7 @@ object PermissionManager {
                     for (n in tempPermissionList.indices) {
                         val permission = tempPermissionList[n]
                         println(permission)
-                        val attachment = player.addAttachment(Main.instance)
+                        val attachment = player.addAttachment(de.marylieh.simpleperms.Main.instance)
                         attachment.setPermission(permission, true)
                     }
                 }
@@ -64,12 +63,12 @@ object PermissionManager {
         val now = System.currentTimeMillis()
         val dif = (time - now) / 1000
         val available = dif.toInt() * 20
-        val attachment = player.addAttachment(Main.instance, available)
+        val attachment = player.addAttachment(de.marylieh.simpleperms.Main.instance, available)
         attachment!!.setPermission(permission!!, false)
     }
 
     fun removePermission(player: Player, permission: String?) {
-        val attachment = player.addAttachment(Main.instance)
+        val attachment = player.addAttachment(de.marylieh.simpleperms.Main.instance)
         attachment.setPermission(permission!!, false)
     }
 

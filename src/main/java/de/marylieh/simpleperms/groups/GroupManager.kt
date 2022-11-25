@@ -1,7 +1,6 @@
-package de.***REMOVED***.simpleperms.groups
+package de.marylieh.simpleperms.groups
 
-import de.***REMOVED***.simpleperms.Main
-import de.***REMOVED***.simpleperms.utils.Config
+import de.marylieh.simpleperms.utils.Config
 import org.bukkit.entity.Player
 
 object GroupManager {

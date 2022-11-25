@@ -1,9 +1,7 @@
-package de.***REMOVED***.simpleperms.listener
+package de.marylieh.simpleperms.listener
 
-import de.***REMOVED***.simpleperms.Main
-import de.***REMOVED***.simpleperms.groups.GroupManager
-import de.***REMOVED***.simpleperms.permissions.PermissionManager
-import de.***REMOVED***.simpleperms.utils.Config
+import de.marylieh.simpleperms.groups.GroupManager
+import de.marylieh.simpleperms.utils.Config
 import org.apache.commons.lang.StringUtils
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -21,7 +19,7 @@ class JoinListener : Listener {
         val permissions = Config.getConfig().getList("Player.$UUID.permissions") as List<String>
         for (i in permissions.indices) {
             val permission = permissions[i]
-            val attachment = player.addAttachment(Main.instance)
+            val attachment = player.addAttachment(de.marylieh.simpleperms.Main.instance)
             attachment.setPermission(permission, true)
         }
 
@@ -46,7 +44,7 @@ class JoinListener : Listener {
                     for (n in tempPermissionList.indices) {
                         val permission = tempPermissionList[n]
                         println(permission)
-                        val attachment = player.addAttachment(Main.instance)
+                        val attachment = player.addAttachment(de.marylieh.simpleperms.Main.instance)
                         attachment.setPermission(permission, true)
                     }
                 }

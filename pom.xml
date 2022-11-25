@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>de.***REMOVED***</groupId>
+    <groupId>de.marylieh</groupId>
     <artifactId>simpleperms</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
@@ -17,7 +17,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <kotlin.version>1.7.10</kotlin.version>
     </properties>
-    <url>github.***REMOVED***.me</url>
+    <url>github.marylieh.me</url>
 
     <build>
         <plugins>
